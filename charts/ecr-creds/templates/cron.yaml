@@ -6,11 +6,11 @@ metadata:
     {{- include "ecr-creds.labels" . | nindent 4 }}
 spec:
   schedule: {{ .Values.cron.schedule | quote }}
-  successfulJobsHistoryLimit: "2"
-  failedJobsHistoryLimit: "2" 
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2 
   jobTemplate:
     spec:
-      backoffLimit: "4"
+      backoffLimit: 4
       template:
         metadata:
           labels:
