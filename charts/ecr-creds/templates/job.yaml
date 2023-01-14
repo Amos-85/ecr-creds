@@ -4,6 +4,10 @@ metadata:
   name: {{ include "ecr-creds.fullname" . }}
   labels:
     {{- include "ecr-creds.labels" . | nindent 4 }}
+  {{- with .Values.jobAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}  
 spec:
   backoffLimit: 4
   template:
